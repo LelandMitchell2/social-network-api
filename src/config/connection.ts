@@ -7,7 +7,7 @@ mongoose.set('strictQuery', false);
 export const connectDB = async (): Promise<void> => {
   try {
     await mongoose.connect(MONGO_URI);
-    console.log(`🟢 MongoDB connected at: ${MONGO_URI}`);
+    console.log(`🟢 MongoDB is connected at: ${MONGO_URI}`);
   } catch (error) {
     console.error('🔴 MongoDB connection error:', error);
     process.exit(1);
