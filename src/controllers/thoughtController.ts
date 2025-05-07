@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 import Thought from '../models/Thought.js';
 import User from '../models/User.js';
 
+// Gets all thoughts
+// GET /api/thoughts
 export const getAllThoughts = async (_: Request, res: Response) => {
   try {
     const thoughts = await Thought.find();
@@ -11,6 +13,8 @@ export const getAllThoughts = async (_: Request, res: Response) => {
   }
 };
 
+// Gets a single thought by ID
+// GET /api/thoughts/:thoughtId
 export const getSingleThought = async (req: Request, res: Response) => {
   try {
     const thought = await Thought.findById(req.params.thoughtId);
@@ -25,6 +29,8 @@ export const getSingleThought = async (req: Request, res: Response) => {
   }
 };
 
+// Creates a new thought
+// POST /api/thoughts
 export const createThought = async (req: Request, res: Response) => {
   try {
     const newThought = await Thought.create({
@@ -42,6 +48,8 @@ export const createThought = async (req: Request, res: Response) => {
   }
 };
 
+// Updates a thought by ID
+// PUT /api/thoughts/:thoughtId
 export const updateThought = async (req: Request, res: Response) => {
   try {
     const thought = await Thought.findByIdAndUpdate(req.params.thoughtId, req.body, {
@@ -59,6 +67,8 @@ export const updateThought = async (req: Request, res: Response) => {
   }
 };
 
+// Deletes a thought by ID
+// DELETE /api/thoughts/:thoughtId
 export const deleteThought = async (req: Request, res: Response) => {
   try {
     const thought = await Thought.findByIdAndDelete(req.params.thoughtId);
@@ -73,6 +83,8 @@ export const deleteThought = async (req: Request, res: Response) => {
   }
 };
 
+// Adds a reaction to a thought
+// POST /api/thoughts/:thoughtId/reactions
 export const addReaction = async (req: Request, res: Response) => {
   try {
     const thought = await Thought.findByIdAndUpdate(
@@ -91,6 +103,8 @@ export const addReaction = async (req: Request, res: Response) => {
   }
 };
 
+// Deletes a reaction from a thought
+// DELETE /api/thoughts/:thoughtId/reactions/:reactionId
 export const removeReaction = async (req: Request, res: Response) => {
   try {
     const thought = await Thought.findByIdAndUpdate(
