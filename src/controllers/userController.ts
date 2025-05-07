@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 import User from '../models/User.js';
 import Thought from '../models/Thought.js';
 
+// Gets all users
+// GET /api/users
 export const getAllUsers = async (_: Request, res: Response) => {
   try {
     const users = await User.find().populate('thoughts').populate('friends');
@@ -12,6 +14,8 @@ export const getAllUsers = async (_: Request, res: Response) => {
   }
 };
 
+// Gets a single user by ID
+// GET /api/users/:userId
 export const getSingleUser = async (req: Request, res: Response) => {
   try {
     const user = await User.findById(req.params.userId).populate('thoughts').populate('friends');
@@ -26,6 +30,8 @@ export const getSingleUser = async (req: Request, res: Response) => {
   }
 };
 
+// Creates a new user
+// POST /api/users
 export const createUser = async (req: Request, res: Response) => {
   try {
     const newUser = await User.create(req.body);
@@ -35,6 +41,8 @@ export const createUser = async (req: Request, res: Response) => {
   }
 };
 
+// Updates a user by ID
+// PUT /api/users/:userId
 export const updateUser = async (req: Request, res: Response) => {
   try {
     const user = await User.findByIdAndUpdate(req.params.userId, req.body, {
@@ -52,6 +60,8 @@ export const updateUser = async (req: Request, res: Response) => {
   }
 };
 
+// Deletes a user by ID
+// DELETE /api/users/:userId
 export const deleteUser = async (req: Request, res: Response) => {
   try {
     const user = await User.findByIdAndDelete(req.params.userId);
@@ -69,6 +79,8 @@ export const deleteUser = async (req: Request, res: Response) => {
   }
 };
 
+// Adds a friend to a user's friend list
+// POST /api/users/:userId/friends/:friendId
 export const addFriend = async (req: Request, res: Response) => {
   try {
     const user = await User.findByIdAndUpdate(
@@ -87,6 +99,8 @@ export const addFriend = async (req: Request, res: Response) => {
   }
 };
 
+// Removes a friend from a user's friend list
+// DELETE /api/users/:userId/friends/:friendId
 export const removeFriend = async (req: Request, res: Response) => {
   try {
     const user = await User.findByIdAndUpdate(
