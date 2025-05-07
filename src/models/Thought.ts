@@ -10,6 +10,8 @@ export interface IThought extends Document {
   reactionCount: number;
 }
 
+// Schema to create Thought model
+// This schema is used as a subdocument in the User model
 const thoughtSchema = new Schema<IThought>(
   {
     thoughtText: {
