@@ -16,6 +16,7 @@
 
   ## Usage
   use it for a social media network api
+  https://app.screencastify.com/v3/watch/QSVOUXFbrVgtYXdcr9ce
 
   ## License
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
