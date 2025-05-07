@@ -2,6 +2,8 @@ import { Types } from 'mongoose';
 
 export const getRandomItem = <T>(arr: T[]): T => arr[Math.floor(Math.random() * arr.length)];
 
+// Sample data for usernames, emails, thoughts, and reactions
+// These are used to generate random users, thoughts, and reactions
 const usernames = [
   'codecat', 'devmaster', 'bughunter', 'stackqueen', 'nodeknight',
   'typelord', 'asyncguru', 'jsonjunkie', 'mongohead', 'reactron',
@@ -9,6 +11,8 @@ const usernames = [
 
 const emails = usernames.map((u) => `${u}@example.com`);
 
+// Sample emails generated from usernames
+// This is a simple way to create unique emails for each user
 const thoughtsText = [
   'Just wrote a clean for-loop!',
   'Anyone else addicted to TypeScript?',
@@ -22,6 +26,8 @@ const thoughtsText = [
   'Why is my linter yelling at me?',
 ];
 
+// Sample thoughts text for generating random thoughts
+// This is a collection of common phrases or questions that developers might think about
 const reactionText = [
   'Same!',
   'LOL 😂',
@@ -35,6 +41,8 @@ const reactionText = [
   'True dev energy',
 ];
 
+// Sample reaction text for generating random reactions
+// This is a collection of common reactions that users might have to thoughts
 export const generateUsers = () => {
   return usernames.map((username, i) => ({
     _id: new Types.ObjectId(),
@@ -45,6 +53,8 @@ export const generateUsers = () => {
   }));
 };
 
+// Function to generate random thoughts for each user
+// This function creates a random number of thoughts (1-3) for each user
 export const generateThoughts = (users: ReturnType<typeof generateUsers>) => {
   return users.map((user) => {
     const numThoughts = Math.floor(Math.random() * 3) + 1;
@@ -61,6 +71,8 @@ export const generateThoughts = (users: ReturnType<typeof generateUsers>) => {
   }).flat();
 };
 
+// Function to generate random reactions for a thought
+// This function creates a random number of reactions (0-2) for each thought
 const generateReactions = (excludeUser: string) => {
   const count = Math.floor(Math.random() * 3);
   const reactionUsers = usernames.filter((u) => u !== excludeUser);
@@ -72,6 +84,8 @@ const generateReactions = (excludeUser: string) => {
   }));
 };
 
+// Function to add random friends to each user
+// This function creates a random number of friends (0-3) for each user
 export const addRandomFriends = (users: any[]) => {
   return users.map((user) => {
     const others = users.filter((u) => u._id.toString() !== user._id.toString());
