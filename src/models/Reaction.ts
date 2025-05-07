@@ -8,6 +8,8 @@ export interface IReaction {
   createdAt: Date;
 }
 
+// Schema to create Reaction model
+// This schema is used as a subdocument in the Thought model
 export const reactionSchema = new Schema<IReaction>(
   {
     reactionId: {
