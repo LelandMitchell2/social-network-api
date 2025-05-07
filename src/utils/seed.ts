@@ -8,6 +8,8 @@ import {
   addRandomFriends,
 } from '../utils/data.js';
 
+// Function to seed the database
+// This function connects to the database, clears existing data, generates new data, and populates the database
 const seedDatabase = async () => {
   await connectDB();
 
