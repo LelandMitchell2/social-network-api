@@ -1,6 +1,8 @@
 import { Schema, Document, Types } from 'mongoose';
 import mongoose from 'mongoose';
 
+// Interface for User model
+// This interface defines the structure of the User document
 interface IUser extends Document {
   username: string;
   email: string;
@@ -10,6 +12,7 @@ interface IUser extends Document {
 }
 
 // Schema to create User model
+// This schema is used as a subdocument in the Thought model
 const userSchema = new mongoose.Schema<IUser>(
   {
     username: {
@@ -45,6 +48,7 @@ const userSchema = new mongoose.Schema<IUser>(
   }
 );
 
+// Virtual: friendCount
 userSchema.virtual('friendCount').get(function (this: IUser) {
   return this.friends.length;
 });
